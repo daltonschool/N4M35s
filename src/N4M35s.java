@@ -173,10 +173,9 @@ public class N4M35s {
         shipname += name2.charAt(2) + "";
 
         return shipname;
-
+    }
 
     //Schoeman, Isabel '20
-
 
 
 }

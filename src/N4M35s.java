@@ -72,6 +72,7 @@ public class N4M35s {
 
 
         //Schoeman, Isabel '20
+        frame.drawText("Your middle name is " + middleName(name), 100, 500, 30, 0, ColorLatte.Chartreuse);
 
 
         //paint:
@@ -146,6 +147,25 @@ public class N4M35s {
 
 
     //Schoeman, Isabel '20
+    static String middleName (String name){
+        String middleName = " " ;
+        String [] splitName = name.split(" ");
+        int x = splitName.length;
+        if (splitName.length <= 2){
+            middleName = "NO MIDDLE NAME";
+        } else {
+            for (int i = 0; i < splitName.length; i++) {
+                if (i == 0 || i == x - 1) {
+                    middleName = middleName;
+
+                } else {
+                    middleName += " " + splitName[i];
+                }
+            }
+
+        }
+        return middleName;
+    }
 
 
 

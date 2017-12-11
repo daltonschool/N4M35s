@@ -74,7 +74,7 @@ public class N4M35s {
 
 
         //Schoeman, Isabel '20
-        frame.drawText("Your middle name is " + middleName(name), 100, 500, 30, 0, ColorLatte.Chartreuse);
+        frame.drawText("Your middle name is " + middleName(name), 100, 230, 30, 0, ColorLatte.Chartreuse);
 
 
         //paint:

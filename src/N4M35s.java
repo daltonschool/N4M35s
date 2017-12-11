@@ -22,34 +22,47 @@ public class N4M35s {
         //Abrahams, Grace '20
 
 
+
         //Allina, Nicole '20
+
 
 
         //Bascobert, Paul (Paul) '19
 
 
+
         //Cahill, Phoebe '20
+
+        String fn = firstname(name);
+        frame.drawText("first name: " + fn, 100, 200, 20, 0, ColorLatte.Crimson);
 
 
         //Firestone, Nicholas '20
 
 
+
         //Foley, Timothy (Teddy) '20
+
 
 
         //Jamee, Mehrab '20
 
 
+
         //Jiang, Claire '20
+
 
 
         //Katz, Liza '20
 
 
+
         //Levin, Hannah '20
 
 
+
         //Miller, Marshall '20
+
 
 
         //Morse, Madeline (Maddie) '20
@@ -58,6 +71,7 @@ public class N4M35s {
         frame.drawText("backwards: " + b, 100, 300, 20, 0, ColorLatte.BlueViolet);
 
         //Radomisli, Julia '20
+
 
 
         //Schoeman, Isabel '20
@@ -73,49 +87,69 @@ public class N4M35s {
         String initials;
 
         //first initial:
-        initials = name.charAt(0) + "";
+        initials = name.charAt(0) +"";
 
         //second initial:
         int space = name.indexOf(" ");
-        initials += name.charAt(space + 1);
+        initials += name.charAt(space+1);
 
         return initials;
     }
 
-//Abrahams, Grace '20
+    //Abrahams, Grace '20
 
 
-//Allina, Nicole '20
+
+    //Allina, Nicole '20
 
 
-//Bascobert, Paul (Paul) '19
+
+    //Bascobert, Paul (Paul) '19
 
 
-//Cahill, Phoebe '20
+
+    //Cahill, Phoebe '20
+
+    static String firstname (String name) {
+        String firstname;
+        String[] getname = name.split(" ");
+
+        firstname = getname[0];
+
+        return firstname;
 
 
-//Firestone, Nicholas '20
+    }
+
+    //Firestone, Nicholas '20
 
 
-//Foley, Timothy (Teddy) '20
+
+    //Foley, Timothy (Teddy) '20
 
 
-//Jamee, Mehrab '20
+
+    //Jamee, Mehrab '20
 
 
-//Jiang, Claire '20
+
+    //Jiang, Claire '20
 
 
-//Katz, Liza '20
+
+    //Katz, Liza '20
 
 
-//Levin, Hannah '20
+
+    //Levin, Hannah '20
 
 
-//Miller, Marshall '20
+
+    //Miller, Marshall '20
 
 
-//Morse, Madeline (Maddie) '20
+
+    //Morse, Madeline (Maddie) '20
 
     static String backwards(String name) {
 
@@ -128,10 +162,12 @@ public class N4M35s {
         return c;
     }
 
-//Radomisli, Julia '20
+    //Radomisli, Julia '20
 
 
-//Schoeman, Isabel '20
+
+    //Schoeman, Isabel '20
 
 
-    }
+
+}

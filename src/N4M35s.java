@@ -30,6 +30,8 @@ public class N4M35s {
 
         //Cahill, Phoebe '20
 
+        String fn = firstname(name);
+        frame.drawText("first name: " + fn, 100, 200, 20, 0, ColorLatte.Crimson);
 
         //Firestone, Nicholas '20
 
@@ -97,7 +99,16 @@ public class N4M35s {
 
     //Cahill, Phoebe '20
 
+    static String firstname (String name) {
+        String firstname;
+        String[] getname = name.split(" ");
 
+        firstname = getname[0];
+
+        return firstname;
+
+
+    }
 
     //Firestone, Nicholas '20
 

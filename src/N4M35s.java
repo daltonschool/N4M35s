@@ -36,7 +36,8 @@ public class N4M35s {
 
 
         //Firestone, Nicholas '20
-
+        String oodled = oodlifey(name);
+        frame.drawText("oodled: " + oodled, 100, 200, 20, 0, ColorLatte.BlueViolet);
 
 
         //Foley, Timothy (Teddy) '20
@@ -110,7 +111,22 @@ public class N4M35s {
 
 
     //Firestone, Nicholas '20
+    static String oodlifey(String name) {
+        //make a string array:
+        //"charlie forster"
+        //declare finalname
+        String[] names = name.split("");
+        String finalname = "";
+        for (int i = 0; i < name.length(); i++) {
+            if(names[i].equals("a")|| names[i].equals("e")|| names[i].equals("i") || names[i].equals("o") || names[i].equals("u") || names[i].equals("y")  ){
+                names[i]="oodle";
+            }
+            //add each individual string to finalname
+            finalname += names[i];
+        }
 
+        return finalname;
+    }
 
 
     //Foley, Timothy (Teddy) '20

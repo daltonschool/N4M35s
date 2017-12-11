@@ -39,7 +39,7 @@ public class N4M35s {
 
         //Firestone, Nicholas '20
         String oodled = oodlifey(name);
-        frame.drawText("oodled: " + oodled, 100, 200, 20, 0, ColorLatte.BlueViolet);
+        frame.drawText("oodled: " + oodled, 100, 230, 20, 0, ColorLatte.BlueViolet);
 
 
         //Foley, Timothy (Teddy) '20

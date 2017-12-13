@@ -22,53 +22,41 @@ public class N4M35s {
         //Abrahams, Grace '20
 
 
-
         //Allina, Nicole '20
-
-
+        String lstnm = LastName(name);
+        frame.drawText("last name: " + lstnm, 400, 400, 20, 0, ColorLatte.CadetBlue);
 
         //Bascobert, Paul (Paul) '19
-
 
 
         //Cahill, Phoebe '20
 
 
-
         //Firestone, Nicholas '20
-
 
 
         //Foley, Timothy (Teddy) '20
 
 
-
         //Jamee, Mehrab '20
-
 
 
         //Jiang, Claire '20
 
 
-
         //Katz, Liza '20
-
 
 
         //Levin, Hannah '20
 
 
-
         //Miller, Marshall '20
-
 
 
         //Morse, Madeline (Maddie) '20
 
 
-
         //Radomisli, Julia '20
-
 
 
         //Schoeman, Isabel '20
@@ -84,11 +72,11 @@ public class N4M35s {
         String initials;
 
         //first initial:
-        initials = name.charAt(0) +"";
+        initials = name.charAt(0) + "";
 
         //second initial:
         int space = name.indexOf(" ");
-        initials += name.charAt(space+1);
+        initials += name.charAt(space + 1);
 
         return initials;
     }
@@ -96,12 +84,26 @@ public class N4M35s {
     //Abrahams, Grace '20
 
 
-
     //Allina, Nicole '20
+    static String LastName(String name) {
+        String lastName = " ";
+        //turn string to array by dividing at spaces
+        String[] nameArray = name.split(" ");
+        if (nameArray.length <= 1) {
+            lastName = "No last name";
+        } else {
+            for (int i = 0; i < nameArray.length; i++) {
+                if (i == nameArray.length - 1) {
+                    lastName += nameArray[i];
+                }
+            }
+            return lastName;
+        }
+        return lastName;
+    }
+}
 
-
-
-    //Bascobert, Paul (Paul) '19
+     //Bascobert, Paul (Paul) '19
 
 
 
@@ -149,4 +151,4 @@ public class N4M35s {
 
 
 
-}
+

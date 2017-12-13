@@ -12,6 +12,10 @@ public class N4M35s {
         frame.println("please enter your full name");
         name = frame.nextLine().toString();
 
+        //take a second name:
+        frame.println("please enter another full name");
+        String name2 = frame.nextLine().toString();
+
         //draw the output:
         frame.drawText(name, 100, 100, 30, 0, ColorLatte.Aquamarine);
 
@@ -72,7 +76,8 @@ public class N4M35s {
         frame.drawText("backwards: " + b, 100, 300, 20, 0, ColorLatte.BlueViolet);
 
         //Radomisli, Julia '20
-
+        String ship = shipname(name, name2);
+        frame.drawText("ship name: " + ship, 300, 200, 20, 0, ColorLatte.Violet);
 
 
         //Schoeman, Isabel '20
@@ -180,8 +185,22 @@ public class N4M35s {
     }
 
     //Radomisli, Julia '20
+    static String shipname(String name, String name2) {
+        String shipname;
 
 
+        //first three letters:
+        shipname = name.charAt(0) + "";
+        shipname += name.charAt(1) + "";
+        shipname += name.charAt(2) + "";
+
+        //next three letters:
+        shipname += name2.charAt(0) + "";
+        shipname += name2.charAt(1) + "";
+        shipname += name2.charAt(2) + "";
+
+        return shipname;
+    }
 
     //Schoeman, Isabel '20
     static String middleName (String name){

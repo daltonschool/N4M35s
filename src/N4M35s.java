@@ -69,7 +69,7 @@ public class N4M35s {
 
         //Miller, Marshall '20
         String length = length(name)+"";
-        frame.drawText("length: " + length, 100, 200, 20, 0, ColorLatte.CornflowerBlue);
+        frame.drawText("length: " + length, 300, 130, 20, 0, ColorLatte.CornflowerBlue);
 
         
         //Morse, Madeline (Maddie) '20

@@ -29,7 +29,7 @@ public class N4M35s {
 
         //Allina, Nicole '20
         String lstnm = LastName(name);
-        frame.drawText("last name: " + lstnm, 400, 400, 20, 0, ColorLatte.CadetBlue);
+        frame.drawText("last name: " + lstnm, 500, 200, 20, 0, ColorLatte.CadetBlue);
 
         //Bascobert, Paul (Paul) '19
 

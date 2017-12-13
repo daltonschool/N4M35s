@@ -12,6 +12,10 @@ public class N4M35s {
         frame.println("please enter your full name");
         name = frame.nextLine().toString();
 
+        //take a second name:
+        frame.println("please enter another full name");
+        String name2 = frame.nextLine().toString();
+
         //draw the output:
         frame.drawText(name, 100, 100, 30, 0, ColorLatte.Aquamarine);
 
@@ -22,10 +26,13 @@ public class N4M35s {
         //Abrahams, Grace '20
 
 
+
         //Allina, Nicole '20
 
 
+
         //Bascobert, Paul (Paul) '19
+
 
 
         //Cahill, Phoebe '20
@@ -33,19 +40,26 @@ public class N4M35s {
         String fn = firstname(name);
         frame.drawText("first name: " + fn, 100, 200, 20, 0, ColorLatte.Crimson);
 
+
         //Firestone, Nicholas '20
+        String oodled = oodlifey(name);
+        frame.drawText("oodled: " + oodled, 100, 260, 20, 0, ColorLatte.BlueViolet);
 
 
         //Foley, Timothy (Teddy) '20
 
 
+
         //Jamee, Mehrab '20
+
 
 
         //Jiang, Claire '20
 
 
+
         //Katz, Liza '20
+
 
 
         //Levin, Hannah '20
@@ -56,19 +70,26 @@ public class N4M35s {
         //Miller, Marshall '20
 
 
+
         //Morse, Madeline (Maddie) '20
+        // (backwards)
+        String b = backwards(name);
+        frame.drawText("backwards: " + b, 100, 300, 20, 0, ColorLatte.BlueViolet);
+
 
 
         //Radomisli, Julia '20
+        String ship = shipname(name, name2);
+        frame.drawText("ship name: " + ship, 300, 200, 20, 0, ColorLatte.Violet);
 
 
         //Schoeman, Isabel '20
+        frame.drawText("Your middle name is " + middleName(name), 100, 230, 30, 0, ColorLatte.Chartreuse);
 
 
         //paint:
         frame.paint();
     }
-
 
 
     //charlie's initials function:
@@ -111,7 +132,22 @@ public class N4M35s {
     }
 
     //Firestone, Nicholas '20
+    static String oodlifey(String name) {
+        //make a string array:
+        //"charlie forster"
+        //declare finalname
+        String[] names = name.split("");
+        String finalname = "";
+        for (int i = 0; i < name.length(); i++) {
+            if(names[i].equals("a")|| names[i].equals("e")|| names[i].equals("i") || names[i].equals("o") || names[i].equals("u") || names[i].equals("y")  ){
+                names[i]="oodle";
+            }
+            //add each individual string to finalname
+            finalname += names[i];
+        }
 
+        return finalname;
+    }
 
 
     //Foley, Timothy (Teddy) '20
@@ -152,13 +188,55 @@ public class N4M35s {
 
     //Morse, Madeline (Maddie) '20
 
+    static String backwards(String name) {
 
+        String c = "";
+
+        for (int b = name.length()-1; b >= 0; b--) {
+            c += name.charAt(b);
+
+        }
+        return c;
+    }
 
     //Radomisli, Julia '20
+    static String shipname(String name, String name2) {
+        String shipname;
 
 
+        //first three letters:
+        shipname = name.charAt(0) + "";
+        shipname += name.charAt(1) + "";
+        shipname += name.charAt(2) + "";
+
+        //next three letters:
+        shipname += name2.charAt(0) + "";
+        shipname += name2.charAt(1) + "";
+        shipname += name2.charAt(2) + "";
+
+        return shipname;
+    }
 
     //Schoeman, Isabel '20
+    static String middleName (String name){
+        String middleName = " " ;
+        String [] splitName = name.split(" ");
+        int x = splitName.length;
+        if (splitName.length <= 2){
+            middleName = "NO MIDDLE NAME";
+        } else {
+            for (int i = 0; i < splitName.length; i++) {
+                if (i == 0 || i == x - 1) {
+                    middleName = middleName;
+
+                } else {
+                    middleName += " " + splitName[i];
+                }
+            }
+
+        }
+        return middleName;
+    }
 
 
 

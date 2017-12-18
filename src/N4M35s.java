@@ -17,7 +17,7 @@ public class N4M35s {
         String name2 = frame.nextLine().toString();
 
         //draw the output:
-        frame.drawText(name, 100, 100, 30, 0, ColorLatte.Aquamarine);
+        frame.drawText(name, 100, 600, 30, 0, ColorLatte.Aquamarine);
 
         //charlie's initials display:
         String its = initials(name);
@@ -47,7 +47,7 @@ public class N4M35s {
 
 
         //Foley, Timothy (Teddy) '20
-        frame.drawText(common(name), 400,500,20,0,ColorLatte.BLACK);
+        frame.drawText("most common letter: " + common(name), 400,500,20,0,ColorLatte.BLACK);
 
         //Jamee, Mehrab '20
 

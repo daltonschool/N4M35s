@@ -8,8 +8,8 @@ import java.awt.image.BufferedImage;
 class ImageBorderDemo {
     public static void main(String[] args) throws Exception {
         // Open a file and save as a BufferedImage (a 2D int array)
-        File f = new File("pic.png");
-        BufferedImage image = ImageIO.read(f);
+        File input = new File("pic.png");
+        BufferedImage image = ImageIO.read(input);
 
         // Get some information about the 2D array
         System.out.println("Width:" + image.getWidth());
@@ -36,13 +36,13 @@ class ImageBorderDemo {
         }
 
         // Create a new file so we don't mess up the original
-        File output = new File(f.getName().replace(".png", "") + "_border.png");
+        File output = new File(input.getName().replace(".png", "") + "_border.png");
         ImageIO.write(image, "PNG", output);
         System.out.println("Created file at " + output.getAbsolutePath());
 
         //draw:
         WebLatte frame = new WebLatte();
-        frame.drawImage(f.getName(), 0, 0 , 100, 100, 0);
+        frame.drawImage(input.getName(), 0, 0 , 100, 100, 0);
         frame.drawImage(output.getName(), 0, 200, 100, 100, 0);
         frame.paint();
     }

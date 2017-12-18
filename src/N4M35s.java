@@ -17,7 +17,7 @@ public class N4M35s {
         String name2 = frame.nextLine().toString();
 
         //draw the output:
-        frame.drawText(name, 100, 100, 30, 0, ColorLatte.Aquamarine);
+        frame.drawText(name, 100, 600, 30, 0, ColorLatte.Aquamarine);
 
         //charlie's initials display:
         String its = initials(name);
@@ -47,11 +47,10 @@ public class N4M35s {
 
 
         //Foley, Timothy (Teddy) '20
-
-
+        frame.drawText("most common letter: " + common(name), 400,500,20,0,ColorLatte.BLACK);
 
         //Jamee, Mehrab '20
-
+        frame.drawText("all caps name: " + toAllCaps(name), 100, 400, 20, 0, ColorLatte.CornflowerBlue);
 
 
         //Jiang, Claire '20
@@ -168,11 +167,40 @@ public class N4M35s {
 
 
     //Foley, Timothy (Teddy) '20
+    static String common(String name) {
+        char[] alphabet = new char[]{'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
+        int[] prevalence = new int[26];
+        String most_common = "";
+        int big = 0;
 
+        for (int i = 0; i < name.length(); i++){
+            for (int j = 0; j < 26; j++){
+                if (name.charAt(i)==alphabet[j]) {
+                    prevalence[j]++;
+                }
+            }
+        }
+        for(int i = 0; i < 26; i++){
+            if (prevalence[i]>big){
+                big = prevalence[i];
+            }
+        }
+
+
+        for (int i = 0; i < 26; i++){
+            if (prevalence[i] == big) {
+                most_common = Character.toString(alphabet[i]) + " ";
+            }
+        }
+
+        return most_common;
+    }
 
 
     //Jamee, Mehrab '20
-
+    static String toAllCaps(String name){
+        return name.toUpperCase();
+    }
 
 
     //Jiang, Claire '20

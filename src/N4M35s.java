@@ -50,7 +50,7 @@ public class N4M35s {
         frame.drawText("most common letter: " + common(name), 400,500,20,0,ColorLatte.BLACK);
 
         //Jamee, Mehrab '20
-
+        frame.drawText("all caps name: " + toAllCaps(name), 100, 400, 20, 0, ColorLatte.CornflowerBlue);
 
 
         //Jiang, Claire '20
@@ -197,7 +197,9 @@ public class N4M35s {
 
 
     //Jamee, Mehrab '20
-
+    static String toAllCaps(String name){
+        return name.toUpperCase();
+    }
 
 
     //Jiang, Claire '20

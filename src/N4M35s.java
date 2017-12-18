@@ -51,7 +51,7 @@ public class N4M35s {
 
 
         //Jamee, Mehrab '20
-        frame.drawText("all caps name: " + toAllCaps(name), 100, 200, 20, 0, ColorLatte.CornflowerBlue);
+        frame.drawText("all caps name: " + toAllCaps(name), 100, 400, 20, 0, ColorLatte.CornflowerBlue);
 
 
         //Jiang, Claire '20

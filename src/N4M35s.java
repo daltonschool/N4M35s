@@ -55,7 +55,8 @@ public class N4M35s {
 
 
         //Jiang, Claire '20
-
+        String removeVowels = removeVowels(name);
+        frame.drawText("Name Without Vowels: " + removeVowels, 400, 300, 20, 0, ColorLatte.CornflowerBlue);
 
 
         //Katz, Liza '20
@@ -175,7 +176,16 @@ public class N4M35s {
 
 
     //Jiang, Claire '20
-
+    //remove all vowels
+    public static String removeVowels(String name){
+        String result= "";
+        for (int i = 0; i < name.length(); i ++){
+                if(name.charAt(i) !='a' && name.charAt(i) != 'A' && name.charAt(i) != 'e' && name.charAt(i) != 'E' && name.charAt(i) != 'i' && name.charAt(i) != 'I' && name.charAt(i) != 'o' && name.charAt(i) != 'O' && name.charAt(i) != 'u'&& name.charAt(i) != 'U'){
+                result+=name.charAt(i);
+            }
+        }
+        return result;
+    }
 
 
     //Katz, Liza '20

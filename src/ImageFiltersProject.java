@@ -58,22 +58,6 @@ public class ImageFiltersProject {
         // Open a file and save as a BufferedImage (a 2D int array)
         BufferedImage image = ImageIO.read(f);
 
-        for (int i = 0; i < image.getWidth(); i++) {
-            for (int j = 0; j < image.getHeight(); j++) {
-                // Get a pixel and separate into red, green, blue
-                Color originalColor = new Color(image.getRGB(i, j)); // column, row
-                int red = originalColor.getRed();
-                int green = originalColor.getGreen();
-                int blue = originalColor.getBlue();
-
-                // Invert the color (i.e., get the photo-negative).
-                Color invertedColor = new Color(255 - red, 255 - green, 255 - blue);
-
-                // Update image with the inverted color.
-                image.setRGB(i, j, invertedColor.getRGB()); // column, row, pixel
-
-            }
-        }
 
         // Create a new file so we don't mess up the original
         File output = new File(f.getName().replace(".jpg", "") + "_inverted.png");

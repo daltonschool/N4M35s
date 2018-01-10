@@ -12,6 +12,7 @@ public class ImageFiltersProject {
     public static void main(String[] args) throws Exception {
         WebLatte frame = new WebLatte();
         File f = new File("slinky.jpg");
+        File grace = new File("GraceImage.jpg");
         File isabel = new File("Isabel.jpg");
         File m = new File("maddie.jpg");
 
@@ -25,12 +26,18 @@ public class ImageFiltersProject {
         frame.drawImage(invertColors(f).getName(), 15, 200, 150, 150, 0);
 
         // Grace
+        frame.drawText("grayscale", 240, 200, 20, 0, ColorLatte.Chocolate);
+        frame.drawImage(blackAndWhite(grace).getName(), 240, 200, 150, 150, 0);
+
 
         // Nicole
 
         // Paul
 
         // Phoebe
+        File phoebe = new File("Phoebe.jpg");
+        frame.drawText("black and white", 15, 400, 20, 0, ColorLatte.Chocolate);
+        frame.drawImage(blackandwhite(phoebe).getName(), 15, 400, 150, 150, 0);
 
         // Nick
 
@@ -75,6 +82,91 @@ public class ImageFiltersProject {
 
     // Grace: Make a copy that is a grayscale version of the file.
 
+    // Nicole: Make a version where the left half of the image is mirrored.
+
+    // Paul: Make a version where the right half of the image is mirrored.
+
+    // Phoebe: Make a version the is purely black and white (not gray).
+
+    public static File blackandwhite (File phoebe) throws IOException {
+        BufferedImage image = ImageIO.read(phoebe);
+        int[][] pixels = new int[image.getWidth()][image.getHeight()];
+
+        for (int i = 0; i < image.getWidth(); i++) {
+            for (int j = 0; j < image.getHeight(); j++) {
+                // Get a pixel and separate into red, green, blue
+                Color originalColor = new Color(image.getRGB(i, j)); // column, row
+                int red = originalColor.getRed();
+                int green = originalColor.getGreen();
+                int blue = originalColor.getBlue();
+
+                pixels[i][j] = (red+green+blue)/3;
+
+            }
+        }
+        //Trying to find the average pixel number
+        int x =0;
+        for (int i = 0; i < image.getWidth(); i++) {
+            for (int j = 0; j < image.getHeight(); j++) {
+               x = x+ pixels[i][j];
+            }
+        }
+        x = x/(pixels.length*pixels[0].length);
+
+        for (int i = 0; i < image.getWidth(); i++) {
+            for (int j = 0; j < image.getHeight(); j++) {
+                // Get a pixel and separate into red, green, blue
+                Color originalColor = new Color(image.getRGB(i, j)); // column, row
+                int red = originalColor.getRed();
+                int green = originalColor.getGreen();
+                int blue = originalColor.getBlue();
+
+                Color blackandwhiteColor;
+                if ((red+green+blue)<x) {
+                    blackandwhiteColor =new Color(0,0,0);
+                } else {
+                    blackandwhiteColor =new Color(255,255,255);
+                }
+                image.setRGB(i, j,blackandwhiteColor.getRGB());
+            }
+        }
+
+        // Create a new file so we don't mess up the original
+        File output = new File(phoebe.getName().replace(".jpg", "") + "_blackandwhite.png");
+        ImageIO.write(image, "PNG", output);
+        return output;
+    }
+
+    public static File blackAndWhite(File f) throws IOException {
+        // Open a file and save as a BufferedImage (a 2D int array)
+        BufferedImage image = ImageIO.read(f);
+
+        for (int i = 0; i < image.getWidth(); i++) {
+            for (int j = 0; j < image.getHeight(); j++) {
+                // Get a pixel and separate into red, green, blue
+                Color originalColor = new Color(image.getRGB(i, j)); // column, row
+                int red = originalColor.getRed();
+                int green = originalColor.getGreen();
+                int blue = originalColor.getBlue();
+
+                int avg = (red + green + blue)/3;
+
+
+                // Invert the color (i.e., get the photo-negative).
+                Color bwColor = new Color(avg, avg, avg);
+
+                // Update image with the inverted color.
+                image.setRGB(i, j, bwColor.getRGB()); // column, row, pixel
+
+
+            }
+        }
+
+        File output = new File(f.getName().replace(".jpg", "") + "_invert.png");
+        ImageIO.write(image, "PNG", output);
+        return output;
+
+    }
     // Nicole: Make a version where the left half of the image is mirrored.
 
     // Paul: Make a version where the right half of the image is mirrored.

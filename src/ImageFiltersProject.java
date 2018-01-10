@@ -58,6 +58,9 @@ public class ImageFiltersProject {
         frame.drawImage(popArt(m).getName(), 15, 300, 400, 400, 0);
 
         // Julia
+        frame.drawText("upside down", 15, 400, 20, 0, ColorLatte.Chocolate);
+        frame.drawImage(upsideDown(f).getName(), 15, 400, 150, 150, 0);
+
 
         // Isabel
         frame.drawText("tile", 15, 400, 20, 0, ColorLatte.Chocolate);
@@ -251,6 +254,30 @@ public class ImageFiltersProject {
         return output;
     }
     // Julia: flip the image upside down
+
+    public static File upsideDown (File f) throws IOException {
+        // Open a file and save as a BufferedImage (a 2D int array)
+        BufferedImage image = ImageIO.read(f);
+        BufferedImage flipped = ImageIO.read(f);
+
+        for (int i = 0; i < image.getWidth(); i++) {
+            for (int j = 0; j < image.getHeight(); j++) {
+
+                Color originalPixel = new Color(image.getRGB(i, j)); // column, row
+
+                int p = image.getHeight() - j-1;
+
+                flipped.setRGB(i, p, originalPixel.getRGB()); // column, row, pixel
+
+
+            }
+        }
+
+        File output = new File(f.getName().replace(".jpg", "") + "_upsidedown.png");
+        ImageIO.write(flipped, "PNG", output);
+        return output;
+
+    }
 
     // Isabel: make a 10 x 10 tiled version of the image
 

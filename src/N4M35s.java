@@ -177,8 +177,6 @@ public class N4M35s {
         firstname = getname[0];
 
         return firstname;
-
-
     }
 
     //Firestone, Nicholas '20

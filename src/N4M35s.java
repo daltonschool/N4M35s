@@ -11,6 +11,8 @@ public class N4M35s {
         //input:
         frame.println("please enter your full name");
         name = frame.nextLine().toString();
+        // make array of vowels
+        //in a 4 loop if inti = aeiuo change it to be equal to a random vowel in your vowel array
 
         //take a second name:
         frame.println("please enter another full name");
@@ -24,8 +26,12 @@ public class N4M35s {
         frame.drawText("initials: " + its, 100, 130, 20, 0, ColorLatte.CornflowerBlue);
 
         //Abrahams, Grace '20
+            //make an array
+        // set vowels equal to random vowel
+        // replace vowlels with new ones
 
-
+        String v = randomvowels(name);
+        frame.drawText("Random Vowels:" + v, 100, 600, 20, 0, ColorLatte.Aquamarine);
 
         //Allina, Nicole '20
         String lstnm = LastName(name);
@@ -108,6 +114,34 @@ public class N4M35s {
     }
 
     //Abrahams, Grace '20
+
+
+    //make an array
+    // set vowels equal to random vowel
+    // replace vowlels with new ones
+
+    static String randomvowels (String name) {
+
+        String[] letters = new String[name.length()];
+        for (int x = 0; x < name.length(); x++) {
+            letters[x] = name.toString();
+        }
+
+        String vowels;
+////        String[] vo = new String {return "a","e", "i", "o", "u"};
+//
+//        for (int y =0; y < name.length(); y++) {
+//            if ((letters [y] ==("a") || (letters[y] == "e")|| (letters[y] == "i")|| (letters[y] == "o")|| (letters[y] == "u")) {
+////            vowels += name.charAt(v);
+//            }
+//        }
+
+         name.split("");
+//        return vowels;
+
+        return "";
+
+    }
 
 
 

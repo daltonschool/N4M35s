@@ -11,6 +11,7 @@ public class ImageFiltersProject {
     public static void main(String[] args) throws Exception {
         WebLatte frame = new WebLatte();
         File f = new File("slinky.jpg");
+        File grace = new File("GraceImage.jpg");
 
         //original:
         frame.drawText("original", 15, 30, 20, 0, ColorLatte.Chocolate);
@@ -21,6 +22,9 @@ public class ImageFiltersProject {
         frame.drawImage(invertColors(f).getName(), 15, 200, 150, 150, 0);
 
         // Grace
+        frame.drawText("grayscale", 240, 200, 20, 0, ColorLatte.Chocolate);
+        frame.drawImage(blackAndWhite(grace).getName(), 240, 200, 150, 150, 0);
+
 
         // Nicole
 
@@ -79,10 +83,39 @@ public class ImageFiltersProject {
         File output = new File(f.getName().replace(".jpg", "") + "_inverted.png");
         ImageIO.write(image, "PNG", output);
         return output;
+
     }
 
-    // Grace: Make a copy that is a grayscale version of the file.
+    public static File blackAndWhite(File f) throws IOException {
+        // Open a file and save as a BufferedImage (a 2D int array)
+        BufferedImage image = ImageIO.read(f);
 
+        for (int i = 0; i < image.getWidth(); i++) {
+            for (int j = 0; j < image.getHeight(); j++) {
+                // Get a pixel and separate into red, green, blue
+                Color originalColor = new Color(image.getRGB(i, j)); // column, row
+                int red = originalColor.getRed();
+                int green = originalColor.getGreen();
+                int blue = originalColor.getBlue();
+
+                int avg = (red + green + blue)/3;
+
+
+                // Invert the color (i.e., get the photo-negative).
+                Color bwColor = new Color(avg, avg, avg);
+
+                // Update image with the inverted color.
+                image.setRGB(i, j, bwColor.getRGB()); // column, row, pixel
+
+
+            }
+        }
+
+        File output = new File(f.getName().replace(".jpg", "") + "_invert.png");
+        ImageIO.write(image, "PNG", output);
+        return output;
+
+    }
     // Nicole: Make a version where the left half of the image is mirrored.
 
     // Paul: Make a version where the right half of the image is mirrored.

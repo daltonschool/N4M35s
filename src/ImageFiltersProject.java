@@ -6,11 +6,14 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.*;
 
 public class ImageFiltersProject {
     public static void main(String[] args) throws Exception {
         WebLatte frame = new WebLatte();
         File f = new File("slinky.jpg");
+        File m = new File("maddie.jpg");
+
 
         //original:
         frame.drawText("original", 15, 30, 20, 0, ColorLatte.Chocolate);
@@ -43,6 +46,8 @@ public class ImageFiltersProject {
         // Marshall
 
         // Maddie
+        frame.drawText("popart", 15, 200, 20, 0, ColorLatte.Chocolate);
+        frame.drawImage(popArt(m).getName(), 15, 300, 400, 400, 0);
 
         // Julia
 
@@ -104,7 +109,68 @@ public class ImageFiltersProject {
     // Marshall: scale the image to a given x and y size
 
     // Maddie: pop art try to mimic the popart filter
+    public static File popArt(File m) throws IOException {
+        BufferedImage image = ImageIO.read(m);
 
+        int cols = 0;
+
+//        for (int i = 0; i < image.getWidth(); i++) {
+//            for (int j = 0; j < image.getHeight(); j++) {
+//                // Get a pixel and separate into red, green, blue
+//                Color originalColor = new Color(image.getRGB(i, j)); // column, row
+//
+//                int red = 20 * (originalColor.getRed()/20);
+//                int green = 20 * (originalColor.getGreen()/20);
+//                int blue = 20 * (originalColor.getBlue()/20);
+//
+//                Color popArt = new Color(red, green, blue);
+//
+//            }
+//        }
+
+//        Arrays.sort(mycolors, new Comparator<Color>() {
+//            @Override
+//            public int compare(Color o1, Color o2) {
+//                return o1.getBlue()-o2.getBlue();
+//            }
+//        });
+
+//        System.err.println(Arrays.toString(mycolors));
+
+        // popArt the color (i.e., get the photo-negative).
+        for (int i = 0; i < image.getWidth(); i++) {
+            for (int j = 0; j < image.getHeight(); j++) {
+                // Get a pixel and separate into red, green, blue
+                Color originalColor = new Color(image.getRGB(i, j)); // column, row
+                int red = originalColor.getRed();
+                int green = originalColor.getGreen();
+                int blue = originalColor.getBlue();
+
+                if (red + green + blue < 250) {
+                    // Update image with the popArt color.
+                    Color popArt = new Color(0, 0, 0);
+                    image.setRGB(i, j, popArt.getRGB()); // column, row, pixel
+                }
+                else if(red>green && red >blue){
+                    Color popArt = new Color(255, 0, 0);
+                    image.setRGB(i, j, popArt.getRGB()); // column, row, pixel
+                }
+                else if(green>red && green >blue){
+                    Color popArt = new Color(0, 0, 255);
+                    image.setRGB(i, j, popArt.getRGB()); // column, row, pixel
+                }
+                else {
+                    Color popArt = new Color(0, 255, 0);
+                    image.setRGB(i, j, popArt.getRGB()); // column, row, pixel
+                }
+
+            }
+        }
+        // Create a new file so we don't mess up the original
+        File output = new File(m.getName().replace(".jpg", "") + "_popArt.png");
+        ImageIO.write(image, "PNG", output);
+        return output;
+    }
     // Julia: flip the image upside down
 
     // Isabel: make a 10 x 10 tiled version of the image

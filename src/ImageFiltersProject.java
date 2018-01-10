@@ -27,6 +27,9 @@ public class ImageFiltersProject {
         // Paul
 
         // Phoebe
+        File phoebe = new File("Phoebe.jpg");
+        frame.drawText("black and white", 15, 400, 20, 0, ColorLatte.Chocolate);
+        frame.drawImage(blackandwhite(phoebe).getName(), 15, 400, 150, 150, 0);
 
         // Nick
 
@@ -88,6 +91,55 @@ public class ImageFiltersProject {
     // Paul: Make a version where the right half of the image is mirrored.
 
     // Phoebe: Make a version the is purely black and white (not gray).
+
+    public static File blackandwhite (File phoebe) throws IOException {
+        BufferedImage image = ImageIO.read(phoebe);
+        int[][] pixels = new int[image.getWidth()][image.getHeight()];
+
+        for (int i = 0; i < image.getWidth(); i++) {
+            for (int j = 0; j < image.getHeight(); j++) {
+                // Get a pixel and separate into red, green, blue
+                Color originalColor = new Color(image.getRGB(i, j)); // column, row
+                int red = originalColor.getRed();
+                int green = originalColor.getGreen();
+                int blue = originalColor.getBlue();
+
+                pixels[i][j] = (red+green+blue)/3;
+
+            }
+        }
+        //Trying to find the average pixel number
+        int x =0;
+        for (int i = 0; i < image.getWidth(); i++) {
+            for (int j = 0; j < image.getHeight(); j++) {
+               x = x+ pixels[i][j];
+            }
+        }
+        x = x/(pixels.length*pixels[0].length);
+
+        for (int i = 0; i < image.getWidth(); i++) {
+            for (int j = 0; j < image.getHeight(); j++) {
+                // Get a pixel and separate into red, green, blue
+                Color originalColor = new Color(image.getRGB(i, j)); // column, row
+                int red = originalColor.getRed();
+                int green = originalColor.getGreen();
+                int blue = originalColor.getBlue();
+
+                Color blackandwhiteColor;
+                if ((red+green+blue)<x) {
+                    blackandwhiteColor =new Color(0,0,0);
+                } else {
+                    blackandwhiteColor =new Color(255,255,255);
+                }
+                image.setRGB(i, j,blackandwhiteColor.getRGB());
+            }
+        }
+
+        // Create a new file so we don't mess up the original
+        File output = new File(phoebe.getName().replace(".jpg", "") + "_blackandwhite.png");
+        ImageIO.write(image, "PNG", output);
+        return output;
+    }
 
     // Nick: Make a version that is half the height and half the width.
 

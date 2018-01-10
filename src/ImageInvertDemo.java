@@ -37,7 +37,16 @@ public class ImageInvertDemo {
         // YOUR CODE STARTS HERE
         // TODO: invert the colors of every pixel in the image.
 
-
+        for (int i =0; i<totalCols; i++) {
+            for (int j=0; j<totalRows; j++) {
+                originalColor = new Color(image.getRGB(i, j)); // column, row
+                red = originalColor.getRed();
+                green = originalColor.getGreen();
+                blue = originalColor.getBlue();
+                invertedColor = new Color(255-red, 255-green, 255-blue);
+                image.setRGB(i, j, invertedColor.getRGB());
+            }
+        }
 
 
         // END YOUR CODE

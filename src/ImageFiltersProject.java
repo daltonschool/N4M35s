@@ -11,6 +11,7 @@ public class ImageFiltersProject {
     public static void main(String[] args) throws Exception {
         WebLatte frame = new WebLatte();
         File f = new File("slinky.jpg");
+        File isabel = new File("Isabel.jpg");
 
         //original:
         frame.drawText("original", 15, 30, 20, 0, ColorLatte.Chocolate);
@@ -50,6 +51,8 @@ public class ImageFiltersProject {
         // Julia
 
         // Isabel
+        frame.drawText("tile", 15, 400, 20, 0, ColorLatte.Chocolate);
+        frame.drawImage(tile(isabel).getName(), 15, 400, 150, 150, 0);
 
         //paint:
         frame.paint();
@@ -144,5 +147,35 @@ public class ImageFiltersProject {
     // Julia: flip the image upside down
 
     // Isabel: make a 10 x 10 tiled version of the image
+
+    static File tile(File f) throws IOException {
+        // Open a file and save as a BufferedImage (a 2D int array)
+        BufferedImage image = ImageIO.read(f);
+        // Make an array that is a tenth of the width 
+        int[][] tile = new int[image.getWidth()/10][image.getHeight()/10];
+        for (int i = 0; i <tile.length ; i++){
+            for (int j = 0; j < tile[0].length; j++) {
+                tile[i][j] = image.getRGB(i*10, j*10);
+
+            }
+            System.out.println();
+        }
+           for (int x = 0; x < 10; x++ ) {
+            for (int y = 0; y < 10; y++) {
+                for (int i = 0; i < tile.length; i++) {
+                    for (int j = 0; j < tile[0].length; j++) {
+                        image.setRGB(i+((tile.length)*x), j+((tile[0].length)*y), tile[i][j]); // column, row, pixel
+                    }
+                }
+            }
+        }
+
+
+        // Create a new file so we don't mess up the original
+        File output = new File(f.getName().replace(".jpg", "") + "_tile.png");
+        ImageIO.write(image, "PNG", output);
+        return output;
+
+    }
 
 }

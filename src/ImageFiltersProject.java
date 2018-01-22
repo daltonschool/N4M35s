@@ -42,6 +42,9 @@ public class ImageFiltersProject {
 
         // Marshall
 
+        frame.drawText("resize", 15, 400, 20, 0, ColorLatte.Chocolate);
+        frame.drawImage(resize(f, 1000, 1000).getName(), 15, 400, 150, 150, 0);
+
         // Maddie
 
         // Julia
@@ -102,6 +105,21 @@ public class ImageFiltersProject {
     // Hannah: Make a darker version of the image
 
     // Marshall: scale the image to a given x and y size
+    public static File resize(File f, int width, int height) throws IOException {
+        // Open a file and save as a BufferedImage (a 2D int array)
+        BufferedImage image = ImageIO.read(f);
+        BufferedImage newImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+        double  widthRatio = image.getWidth()/width;
+        double heightRatio = image.getHeight()/height;
+        for (int i = 0; i < width; i++) {
+            for (int j = 0; j < height; j++) {
+                newImage.setRGB(i, j, image.getRGB((int)(i*widthRatio), (int)(j*heightRatio)));
+            }
+        }
+        File output = new File(f.getName().replace(".jpg", "") + "_resized.png");
+        ImageIO.write(newImage, "PNG", output);
+        return output;
+    }
 
     // Maddie: pop art try to mimic the popart filter
 

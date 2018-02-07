@@ -11,6 +11,7 @@ public class ImageInvertDemo {
         File f = new File("slinky.jpg");
         BufferedImage image = ImageIO.read(f);
 
+
         // Get some information about the 2D array
         int totalCols = image.getWidth();
         int totalRows = image.getHeight();

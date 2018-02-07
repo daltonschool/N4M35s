@@ -37,6 +37,8 @@ public class N4M35s {
         String lstnm = LastName(name);
         frame.drawText("last name: " + lstnm, 500, 200, 20, 0, ColorLatte.CadetBlue);
 
+
+
         //Bascobert, Paul (Paul) '19
 
 
@@ -65,19 +67,21 @@ public class N4M35s {
 
 
         //Katz, Liza '20
-
-
+        its = hackerName(name);
+        frame.drawText("H4CK3R: " + its, 510, 260, 20, 0, ColorLatte.CYAN);
 
         //Levin, Hannah '20
         //hannah's spacify display
         String space = spacify(name);
         frame.drawText("s p a c i f y: " + space, 100, 160, 20, 0, ColorLatte.MediumPurple);
 
+
+
         //Miller, Marshall '20
         String length = length(name)+"";
         frame.drawText("length: " + length, 300, 130, 20, 0, ColorLatte.CornflowerBlue);
 
-        
+
         //Morse, Madeline (Maddie) '20
         // (backwards)
         String b = backwards(name);
@@ -249,8 +253,54 @@ public class N4M35s {
 
 
     //Katz, Liza '20
+    static String hackerName(String name) {
+        String[] hacker = new String[name.length()];
+        hacker = name.split("");
+        int i = 1;
+        String H4CK3R = "";
+        while (i < hacker.length) {
+
+            //hackerfy
+            boolean hackerfy = true;
+            if (hacker[i].equals("E") || hacker[i].equals("e")) {
+                hacker[i] = "3";
+            }
+
+            else if (hacker[i].equals("A") || hacker[i].equals("a")) {
+                hacker[i] = "4";
+            }
+
+            else if (hacker[i].equals("O") || hacker[i].equals("o")) {
+                hacker[i] = "0";
+            }
+
+            else if (hacker[i].equals("S") || hacker[i].equals("s")) {
+                hacker[i] = "5";
+            }
+
+            else if (hacker[i].equals("I") || hacker[i].equals("i")) {
+                hacker[i] = "1";
+            }
+
+            else if (hacker[i].equals("T") || hacker[i].equals("t")) {
+                hacker[i] = "7";
+            }
+
+            else if (hacker[i].equals("B") || hacker[i].equals("b")) {
+                hacker[i] = "8";
+            }
+
+            i++;
+        }
 
 
+        for (int j = 0; j < hacker.length; j++) {
+
+            H4CK3R += hacker[j];
+        }
+
+        return H4CK3R;
+    }
 
     //Levin, Hannah '20
     static String spacify(String name) {

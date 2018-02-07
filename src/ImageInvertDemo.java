@@ -11,6 +11,7 @@ public class ImageInvertDemo {
         File f = new File("slinky.jpg");
         BufferedImage image = ImageIO.read(f);
 
+
         // Get some information about the 2D array
         int totalCols = image.getWidth();
         int totalRows = image.getHeight();
@@ -19,35 +20,28 @@ public class ImageInvertDemo {
 
         // SAMPLE CODE TO INVERT A PIXEL
 
-        // Get a pixel and separate into red, green, blue
-
-
-        // Update image with the inverted color.
-//        image.setRGB(0, 0, invertedColor.getRGB()); // column, row, pixel
 
         // END SAMPLE CODE
 
 
         // YOUR CODE STARTS HERE
         // TODO: invert the colors of every pixel in the image.
-        for (int i = 0; i < image.getWidth(); i++){
-            for(int j=0; j < image.getHeight(); j++) {
+        int h = 0;
 
-                Color originalColor = new Color(image.getRGB(i, j)); // column, row
+        for (int i = 0; i < image.getWidth(); i++) {
+            for (int j = 0; j < image.getHeight(); j++) {
+                Color  originalColor = new Color(image.getRGB(i, j)); // column, row
                 int red = originalColor.getRed();
                 int green = originalColor.getGreen();
                 int blue = originalColor.getBlue();
 
                 // Invert the color (i.e., get the photo-negative).
-                Color invertedColor = new Color(255-red, 255-green, 255-blue);
-                image.setRGB(i, j, invertedColor.getRGB());
+                Color invertedColor = new Color(255 - red, 255 - green, 255 - blue);
+
+                // Update image with the inverted color.
+                image.setRGB(i, j, invertedColor.getRGB()); // column, row, pixel
             }
         }
-
-
-
-
-
 
 
         // END YOUR CODE
@@ -59,7 +53,7 @@ public class ImageInvertDemo {
         System.out.println("Created file at " + output.getAbsolutePath());
 
         WebLatte frame = new WebLatte();
-        frame.drawImage(f.getName(), 0, 0 , 100, 100, 0);
+        frame.drawImage(f.getName(), 0, 0, 100, 100, 0);
         frame.drawImage(output.getName(), 0, 200, 100, 100, 0);
         frame.paint();
 

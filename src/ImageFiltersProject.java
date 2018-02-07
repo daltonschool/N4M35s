@@ -14,11 +14,11 @@ public class ImageFiltersProject {
 
         //original:
         frame.drawText("original", 15, 30, 20, 0, ColorLatte.Chocolate);
-        frame.drawImage(f.getName(), 15, 30, 150, 150, 0);
+        frame.drawImage(f.getName(), 15, 30, 100, 150, 0);
 
         //invert:
-        frame.drawText("invert", 15, 200, 20, 0, ColorLatte.Chocolate);
-        frame.drawImage(invertColors(f).getName(), 15, 200, 150, 150, 0);
+        frame.drawText("invert", 15, 180, 20, 0, ColorLatte.Chocolate);
+        frame.drawImage(invertColors(f).getName(), 15, 180, 150, 150, 0);
 
         // Grace
 
@@ -37,6 +37,8 @@ public class ImageFiltersProject {
         // Claire
 
         // Liza
+        frame.drawText("brighter colors", 15, 350, 20, 0, ColorLatte.BlueViolet);
+        frame.drawImage(Brighter(f).getName(), 15, 350, 150, 150, 0);
 
         // Hannah
 
@@ -98,6 +100,52 @@ public class ImageFiltersProject {
     // Claire: Make a sepia-colored version.
 
     // Liza: Make a brighter version of the image.
+    public static File Brighter(File h) throws IOException {
+        // Open a file and save as a BufferedImage (a 2D int array)
+        BufferedImage image = ImageIO.read(h);
+
+        //find image height/width and declare colors separately
+        for (int k = 0; k < image.getWidth(); k++) {
+            for (int l = 0; l < image.getHeight(); l++) {
+                // Get a pixel and separate into red, green, blue
+                Color originalColor = new Color(image.getRGB(k, l)); // column, row
+                int red = originalColor.getRed();
+                int green = originalColor.getGreen();
+                int blue = originalColor.getBlue();
+
+
+
+                // brighten the color/make white if over 255
+                red +=60;
+                green +=60;
+                blue +=60;
+
+                if (red>255){
+                    red = 255;
+                }
+                if (blue>255){
+                    blue = 255;
+                }
+
+                if (green>255){
+                    green = 255;
+                }
+
+                Color brighterColor = new Color(red, green, blue);
+
+                // Update image with the brighter color.
+                image.setRGB(k, l, brighterColor.getRGB()); // column, row, pixel
+
+            }
+        }
+
+        // Create a new file so we don't mess up the original
+        File output2 = new File(h.getName().replace(".jpg", "") + "brightercolor.png");
+        ImageIO.write(image, "PNG", output2);
+        return output2;
+    }
+
+
 
     // Hannah: Make a darker version of the image
 

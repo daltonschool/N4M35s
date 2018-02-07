@@ -71,7 +71,7 @@ public class N4M35s {
         //Levin, Hannah '20
         //hannah's spacify display
         String space = spacify(name);
-        frame.drawText("spacify: " + space, 120, 160, 20, 0, ColorLatte.MediumPurple);
+        frame.drawText("s p a c i f y: " + space, 100, 160, 20, 0, ColorLatte.MediumPurple);
 
         //Miller, Marshall '20
         String length = length(name)+"";

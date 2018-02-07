@@ -11,7 +11,6 @@ public class ImageInvertDemo {
         File f = new File("slinky.jpg");
         BufferedImage image = ImageIO.read(f);
 
-
         // Get some information about the 2D array
         int totalCols = image.getWidth();
         int totalRows = image.getHeight();
@@ -21,24 +20,19 @@ public class ImageInvertDemo {
         // SAMPLE CODE TO INVERT A PIXEL
 
         // Get a pixel and separate into red, green, blue
-//        Color originalColor = new Color(image.getRGB(0, 0)); // column, row
-//        int red = originalColor.getRed();
-//        int green = originalColor.getGreen();
-//        int blue = originalColor.getBlue();
-//
-//        // Invert the color (i.e., get the photo-negative).
-//        Color invertedColor = new Color(255-red, 255-green, 255-blue);
-//
-//        // Update image with the inverted color.
+
+
+        // Update image with the inverted color.
 //        image.setRGB(0, 0, invertedColor.getRGB()); // column, row, pixel
-//
-//        // END SAMPLE CODE
+
+        // END SAMPLE CODE
 
 
         // YOUR CODE STARTS HERE
         // TODO: invert the colors of every pixel in the image.
-        for (int i = 0; i < totalCols; i++) {
-            for (int j = 0; j < totalRows; j++) {
+        for (int i = 0; i < image.getWidth(); i++){
+            for(int j=0; j < image.getHeight(); j++) {
+
                 Color originalColor = new Color(image.getRGB(i, j)); // column, row
                 int red = originalColor.getRed();
                 int green = originalColor.getGreen();
@@ -46,14 +40,10 @@ public class ImageInvertDemo {
 
                 // Invert the color (i.e., get the photo-negative).
                 Color invertedColor = new Color(255-red, 255-green, 255-blue);
-
-                // Update image with the inverted color.
-                image.setRGB(i, j, invertedColor.getRGB()); // column, row, pixel
-
-                // END SAMPLE CODE
+                image.setRGB(i, j, invertedColor.getRGB());
             }
-
         }
+
 
 
 

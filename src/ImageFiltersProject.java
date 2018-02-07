@@ -11,6 +11,7 @@ public class ImageFiltersProject {
     public static void main(String[] args) throws Exception {
         WebLatte frame = new WebLatte();
         File f = new File("slinky.jpg");
+        File Hannah = new File("hannah.jpg");
         File grace = new File("GraceImage.jpg");
         File isabel = new File("Isabel.jpg");
         File m = new File("maddie.jpg");
@@ -49,6 +50,9 @@ public class ImageFiltersProject {
         // Liza
 
         // Hannah
+
+        frame.drawText("Darker Version", 15, 400, 20, 0, ColorLatte.Chocolate);
+        frame.drawImage(darkVersion(Hannah,200).getName(), 15, 400, 150, 150, 0);
 
         // Marshall
 
@@ -189,6 +193,36 @@ public class ImageFiltersProject {
     // Liza: Make a brighter version of the image.
 
     // Hannah: Make a darker version of the image
+    public static File darkVersion(File Hannah, int darker) throws IOException {
+
+        BufferedImage image = ImageIO.read(Hannah);
+
+        //find size of image
+        for (int i = 0; i < image.getWidth(); i++) {
+            for (int j = 0; j < image.getHeight(); j++) {
+
+                //get pixel and separate into red, green, and blue
+                Color originalColor = new Color(image.getRGB(i, j)); // column, row
+                int red = originalColor.getRed();
+                int green = originalColor.getGreen();
+                int blue = originalColor.getBlue();
+
+
+                // Make the color darker
+                Color darkVersion = new Color(Math.max(red - darker,0), Math.max(green -darker,0), Math.max(blue -darker,0));
+
+                // Update image with the darker color.
+                image.setRGB(i, j, darkVersion.getRGB()); // column, row, pixel
+
+            }
+        }
+
+        // Create a new file so we don't mess up the original
+        File output = new File(Hannah.getName().replace(".jpg", "") + "_darkened.png");
+        ImageIO.write(image, "PNG", output);
+        return output;
+
+    }
 
     // Marshall: scale the image to a given x and y size
     public static File resize(File f, int width, int height) throws IOException {
